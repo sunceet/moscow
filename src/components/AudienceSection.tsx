@@ -46,24 +46,36 @@ const workers = [
 
 function BenefitList({
   items,
+  inverted = false,
 }: {
   items: { n: string; title: string; text: string }[];
+  inverted?: boolean;
 }) {
   return (
-    <ul className="divide-y divide-rule/20">
+    <ul className={inverted ? "divide-y divide-paper/15" : "divide-y divide-rule"}>
       {items.map((item) => (
         <li
           key={item.n}
-          className="grid grid-cols-[3.5rem_1fr] gap-4 py-7 first:pt-0 last:pb-0 sm:grid-cols-[4rem_1fr] sm:gap-8"
+          className="group grid grid-cols-[3.5rem_1fr] gap-4 py-7 first:pt-0 last:pb-0 sm:grid-cols-[4rem_1fr] sm:gap-8"
         >
-          <span className="font-display text-2xl font-black text-red/70">
+          <span
+            className={`font-display text-2xl font-black transition-colors ${
+              inverted
+                ? "text-paper/30 group-hover:text-red"
+                : "text-red/60 group-hover:text-red"
+            }`}
+          >
             {item.n}
           </span>
           <div>
             <h4 className="font-display text-lg font-bold uppercase leading-tight tracking-tight">
               {item.title}
             </h4>
-            <p className="mt-2 max-w-md text-[15px] leading-relaxed opacity-80">
+            <p
+              className={`mt-2 max-w-md text-[15px] leading-relaxed ${
+                inverted ? "text-paper/75" : "text-ink-muted"
+              }`}
+            >
               {item.text}
             </p>
           </div>
@@ -78,11 +90,17 @@ export function AudienceSection() {
     <>
       <section
         id="customers"
-        className="scroll-mt-16 border-b border-rule bg-ink text-paper"
+        className="scroll-mt-[var(--header-h)] border-b border-rule bg-ink text-paper"
       >
-        <div className="mx-auto max-w-[1200px]">
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-            <div className="border-b border-paper/15 px-5 py-14 sm:px-8 lg:border-b-0 lg:border-r lg:py-20">
+        <div className="relative mx-auto max-w-[1200px] overflow-x-clip">
+          <p
+            className="watermark pointer-events-none absolute right-0 top-4 font-display font-black uppercase select-none text-paper/[0.04]"
+            aria-hidden
+          >
+            Заказ
+          </p>
+          <div className="relative grid min-w-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+            <div className="min-w-0 border-b border-paper/15 px-5 py-14 sm:px-8 lg:border-b-0 lg:border-r lg:py-20">
               <p className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-paper/50">
                 Заказчикам
               </p>
@@ -99,17 +117,26 @@ export function AudienceSection() {
                 на смену.
               </p>
             </div>
-            <div className="px-5 py-10 sm:px-8 sm:py-14 lg:py-20">
-              <BenefitList items={customers} />
+            <div className="min-w-0 px-5 py-10 sm:px-8 sm:py-14 lg:py-20">
+              <BenefitList items={customers} inverted />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="workers" className="scroll-mt-16 border-b border-rule">
-        <div className="mx-auto max-w-[1200px]">
-          <div className="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
-            <div className="border-b border-rule px-5 py-14 sm:px-8 lg:border-b-0 lg:border-r lg:py-20">
+      <section
+        id="workers"
+        className="scroll-mt-[var(--header-h)] border-b border-rule"
+      >
+        <div className="relative mx-auto max-w-[1200px] overflow-x-clip">
+          <p
+            className="watermark pointer-events-none absolute right-0 top-4 font-display font-black uppercase select-none"
+            aria-hidden
+          >
+            Смена
+          </p>
+          <div className="relative grid min-w-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)]">
+            <div className="min-w-0 border-b border-rule px-5 py-14 sm:px-8 lg:border-b-0 lg:border-r lg:py-20">
               <p className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-ink-muted">
                 Работникам
               </p>
@@ -125,7 +152,7 @@ export function AudienceSection() {
                 Работайте через систему с прозрачной оплатой и защитой.
               </p>
             </div>
-            <div className="stripe px-5 py-10 sm:px-8 sm:py-14 lg:py-20">
+            <div className="stripe min-w-0 px-5 py-10 sm:px-8 sm:py-14 lg:py-20">
               <BenefitList items={workers} />
             </div>
           </div>

@@ -6,20 +6,22 @@ import { Hero } from "@/components/Hero";
 import { HowItWorks } from "@/components/HowItWorks";
 import { Marquee } from "@/components/Marquee";
 import { PlatformFeatures } from "@/components/PlatformFeatures";
+import { StatStrip } from "@/components/StatStrip";
 
 export default function Home() {
   return (
-    <>
+    <div className="site-shell">
       <Marquee />
       <Header />
       <main>
         <Hero />
+        <StatStrip />
         <AudienceSection />
         <HowItWorks />
         <PlatformFeatures />
         <CtaSection />
       </main>
       <Footer />
-    </>
+    </div>
   );
 }

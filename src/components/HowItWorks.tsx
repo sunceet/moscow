@@ -23,21 +23,29 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how" className="scroll-mt-16 border-b border-rule">
+    <section id="how" className="scroll-mt-[var(--header-h)] border-b border-rule">
       <div className="mx-auto max-w-[1200px]">
-        <div className="border-b border-rule px-5 py-10 sm:px-8">
-          <p className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-ink-muted">
-            Процесс
+        <div className="flex flex-col gap-4 border-b border-rule px-5 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-8">
+          <div>
+            <p className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-ink-muted">
+              Процесс
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight sm:text-4xl">
+              От заявки до смены
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm uppercase tracking-widest text-ink-muted">
+            4 шага · без лишних звонков
           </p>
-          <h2 className="mt-3 font-display text-3xl font-black uppercase tracking-tight sm:text-4xl">
-            От заявки до смены
-          </h2>
         </div>
 
-        <ol className="grid divide-y divide-rule sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 [&>li]:border-rule [&>li]:sm:border-l [&>li]:sm:border-t-0 [&>li:first-child]:sm:border-l-0">
+        <ol className="grid divide-y divide-rule sm:grid-cols-2 sm:divide-y-0 lg:grid-cols-4 [&>li]:min-w-0 [&>li]:border-rule [&>li]:sm:border-l [&>li]:sm:border-t-0 [&>li:first-child]:sm:border-l-0">
           {steps.map((item) => (
-            <li key={item.step} className="px-5 py-10 sm:px-8">
-              <span className="font-display text-[4rem] font-black leading-none text-paper-dark sm:text-[5rem]">
+            <li
+              key={item.step}
+              className="group px-5 py-10 transition-colors hover:bg-paper-dark sm:px-8"
+            >
+              <span className="font-display text-[4rem] font-black leading-none text-paper-dark transition-colors group-hover:text-red/25 sm:text-[5rem]">
                 {item.step}
               </span>
               <h3 className="mt-4 font-display text-base font-bold uppercase tracking-wide">

@@ -7,9 +7,19 @@ const points = [
 
 export function PlatformFeatures() {
   return (
-    <section id="platform" className="scroll-mt-16 border-b border-rule bg-red text-paper">
-      <div className="mx-auto max-w-[1200px] px-5 py-16 sm:px-8 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+    <section
+      id="platform"
+      className="scroll-mt-[var(--header-h)] border-b border-rule bg-red text-paper"
+    >
+      <div className="relative mx-auto max-w-[1200px] overflow-x-clip px-5 py-16 sm:px-8 sm:py-20">
+        <p
+          className="pointer-events-none absolute -left-2 bottom-0 font-display text-[clamp(5rem,18vw,11rem)] font-black uppercase leading-none text-paper/[0.07] select-none"
+          aria-hidden
+        >
+          04
+        </p>
+
+        <div className="relative grid gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
             <p className="font-display text-[11px] font-bold uppercase tracking-[0.28em] text-paper/60">
               Система
@@ -22,16 +32,16 @@ export function PlatformFeatures() {
               внутри
             </h2>
             <p className="mt-8 max-w-md text-[16px] leading-relaxed text-paper/85">
-              Рейтинги, отзывы и бонусы за частые смены — не маркетинговая
-              обёртка, а механизм, который делает платформу выгодной для всех.
+              Рейтинги, отзывы и бонусы за частые смены — механизм, который
+              делает платформу выгодной для всех.
             </p>
           </div>
 
-          <ul className="space-y-0 divide-y divide-paper/25 border border-paper/25">
+          <ul className="divide-y divide-paper/25 border border-paper/25 bg-ink/10">
             {points.map((text, i) => (
               <li
                 key={i}
-                className="grid grid-cols-[2.5rem_1fr] gap-4 px-5 py-6 sm:grid-cols-[3rem_1fr] sm:px-6"
+                className="grid grid-cols-[2.5rem_1fr] gap-4 px-5 py-6 transition-colors hover:bg-ink/20 sm:grid-cols-[3rem_1fr] sm:px-6"
               >
                 <span className="font-display text-xl font-black text-paper/40">
                   {String(i + 1).padStart(2, "0")}
